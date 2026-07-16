@@ -67,9 +67,6 @@ void Student::readFromFile(std::ifstream &in)
 
 void Student::display() const
 {
-    std::cout << "\n=========================================\n";
-    std::cout << "          STUDENT RECORDS\n";
-    std::cout << "=========================================\n";
     std::cout << "----------------------------------------\n";
     std::cout << "Roll Number : " << rollNo << '\n';
     std::cout << "Name        : " << name << '\n';
