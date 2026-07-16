@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -30,10 +31,13 @@ public:
     float getCGPA() const;
 
     // Setters
+    void setRollNo(int rollNo);
     void setName(const string &name);
     void setAge(int age);
     void setBranch(const string &branch);
     void setCGPA(float cgpa);
+    void writeToFile(std::ofstream &out) const;
+    void readFromFile(std::ifstream &in);
 };
 
 #endif

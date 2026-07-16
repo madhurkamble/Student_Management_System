@@ -9,34 +9,74 @@ Student::Student()
 
 void Student::input()
 {
-    cout << "\nEnter Roll Number : ";
-    cin >> rollNo;
+    std::cout << "Enter Name : ";
+    std::getline(std::cin, name);
 
-    cin.ignore();
+    while (true)
+    {
+        std::cout << "Enter Age : ";
+        std::cin >> age;
 
-    cout << "Enter Name : ";
-    getline(cin, name);
+        if (age >= 16 && age <= 35)
+            break;
 
-    cout << "Enter Age : ";
-    cin >> age;
+        std::cout << "Invalid age! Age must be between 16 and 35.\n";
+    }
 
-    cin.ignore();
+    std::cin.ignore();
 
-    cout << "Enter Branch : ";
-    getline(cin, branch);
+    std::cout << "Enter Branch : ";
+    std::getline(std::cin, branch);
 
-    cout << "Enter CGPA : ";
-    cin >> cgpa;
+    while (true)
+    {
+        std::cout << "Enter CGPA : ";
+        std::cin >> cgpa;
+
+        if (cgpa >= 0.0 && cgpa <= 10.0)
+            break;
+
+        std::cout << "Invalid CGPA! CGPA must be between 0.0 and 10.0\n";
+    }
+}
+
+void Student::writeToFile(std::ofstream &out) const
+{
+    out << rollNo << endl;
+    out << name << endl;
+    out << age << endl;
+    out << branch << endl;
+    out << cgpa << endl;
+}
+
+void Student::readFromFile(std::ifstream &in)
+{
+    in >> rollNo;
+    in.ignore();
+
+    getline(in, name);
+
+    in >> age;
+    in.ignore();
+
+    getline(in, branch);
+
+    in >> cgpa;
+    in.ignore();
 }
 
 void Student::display() const
 {
-    cout << "\n-----------------------------\n";
-    cout << "Roll Number : " << rollNo << endl;
-    cout << "Name        : " << name << endl;
-    cout << "Age         : " << age << endl;
-    cout << "Branch      : " << branch << endl;
-    cout << "CGPA        : " << cgpa << endl;
+    std::cout << "\n=========================================\n";
+    std::cout << "          STUDENT RECORDS\n";
+    std::cout << "=========================================\n";
+    std::cout << "----------------------------------------\n";
+    std::cout << "Roll Number : " << rollNo << '\n';
+    std::cout << "Name        : " << name << '\n';
+    std::cout << "Age         : " << age << '\n';
+    std::cout << "Branch      : " << branch << '\n';
+    std::cout << "CGPA        : " << cgpa << '\n';
+    std::cout << "----------------------------------------\n";
 }
 
 int Student::getRollNo() const
@@ -62,6 +102,11 @@ string Student::getBranch() const
 float Student::getCGPA() const
 {
     return cgpa;
+}
+
+void Student::setRollNo(int rollNo)
+{
+    this->rollNo = rollNo;
 }
 
 void Student::setName(const string &n)

@@ -1,12 +1,12 @@
-# Executables
+# Executable files
 *.exe
+
+# VS Code settings
+.vscode/
 
 # Object files
 *.o
-*.obj
 
-# VS Code
-.vscode/
-
-# Temporary files
-*.log
+# Debug files
+*.ilk
+*.pdb
